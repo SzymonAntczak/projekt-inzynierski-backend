@@ -1,10 +1,10 @@
 type Restaurant {
-    id: ID!
-    name: String!
-    owner: String!
+    _id: ID
+    name: String
+    owner: String
 }
 
 type Query {
-    restaurants: [Restaurant!]!
-    restaurant(id: ID!): Restaurant
+    restaurants: [Restaurant!]
+    restaurant(_id: ID!): Restaurant
 }

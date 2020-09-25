@@ -1,6 +1,7 @@
 import { ApolloServer } from 'apollo-server';
 import * as typeDefs from './graphql/type-defs.graphql';
 import resolvers from './graphql/resolvers/resolvers';
+import Mongoose from 'mongoose';
 import { environment } from './environment';
 
 const server = new ApolloServer({
@@ -10,9 +11,14 @@ const server = new ApolloServer({
     playground: environment.apollo.playground
 });
 
-server.listen(environment.port)
+Mongoose.connect(`mongodb+srv://${environment.mongoDb.user}:${environment.mongoDb.password}@cluster0.tbr7j.mongodb.net/${environment.mongoDb.name}?retryWrites=true&w=majority`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => server.listen(environment.port))
     .then(serverInfo => console.log(`Server ready at ${serverInfo.url}. `))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
+    
 
 if (module.hot) {
     module.hot.accept();
