@@ -2,17 +2,14 @@
   "name": "projekt-inzynierski",
   "version": "1.0.0",
   "description": "Politechnika Wrocławska - projekt inżynierski aplikacji internetowej do rezerwacji miejsc w restauracjach.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
   "author": "Szymon Antczak",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "express-graphql": "^0.11.0",
+    "apollo-server": "^2.18.1",
     "graphql": "^15.3.0"
   },
   "devDependencies": {

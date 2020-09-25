@@ -1,17 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const graphqlHttp = require('express-graphql');
-const { buildSchema } = require('graphql');
+const { typeDefs, resolvers } = require('./src/graphql/schema');
+const { ApolloServer } = require('apollo-server');
 
-const app = express();
+const server = new ApolloServer({ typeDefs, resolvers });
 
-app.use(bodyParser.json());
-
-app.use('/graphql', graphqlHttp({
-    schema: buildSchema(`
-
-    `),
-    rootValue: {}
-}));
-
-app.listen(4200);
+server.listen();
