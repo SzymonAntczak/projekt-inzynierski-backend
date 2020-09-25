@@ -1,0 +1,10 @@
+type Restaurant {
+    id: ID!
+    name: String!
+    owner: String!
+}
+
+type Query {
+    restaurants: [Restaurant!]!
+    restaurant(id: ID!): Restaurant
+}

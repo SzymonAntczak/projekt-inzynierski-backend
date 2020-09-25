@@ -9,7 +9,7 @@ const restaurants: Restaurant[] = [
     },
     {
         id: 2,
-        name: 'KFC',
+        name: 'KFC', 
         owner: 'Someone'
     }
 ];

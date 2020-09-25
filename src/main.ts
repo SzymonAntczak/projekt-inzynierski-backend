@@ -1,5 +1,6 @@
 import { ApolloServer } from 'apollo-server';
-import { typeDefs, resolvers } from './graphql/schema';
+import * as typeDefs from './graphql/type-defs.graphql';
+import resolvers from './graphql/resolvers/resolvers';
 import { environment } from './environment';
 
 const server = new ApolloServer({
