@@ -1,7 +1,7 @@
-const { gql } = require('apollo-server');
-const restaurantsResolver = require('./resolvers/restaurants.resolver');
+import { gql, IResolvers } from 'apollo-server';
+import { restaurantsResolver } from './resolvers/restaurants/restaurants.resolver';
 
-const typeDefs = gql`
+export const typeDefs = gql`
     type Restaurant {
         id: ID!
         name: String!
@@ -16,10 +16,8 @@ const typeDefs = gql`
     # type Mutation { }
 `;
 
-const resolvers = {
+export const resolvers: IResolvers = {
     Query: {
         ...restaurantsResolver.queries
     }
 }
-
-module.exports = { typeDefs, resolvers };
