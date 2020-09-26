@@ -1,8 +1,10 @@
 import { IResolvers } from "apollo-server";
 import { restaurantsResolver } from './restaurants/restaurants.resolver';
-  
-export default {
+
+const resolvers: IResolvers = {
     Query: {
         ...restaurantsResolver.queries
     }
-} as IResolvers;
+}
+  
+export default resolvers;
