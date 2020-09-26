@@ -1,12 +1,17 @@
-export interface Restaurant {
-    id: number;
+/* eslint-disable no-unused-vars */
+import { Document } from 'mongoose';
+
+export interface GqlRestaurant extends Document {
+    _id: string;
     name: string;
     owner: string;
 }
 
-export interface RestaurantQueries {
-    restaurants(): Restaurant[];
-    restaurant(parent: any, args: any, ): Restaurant | null;
+export interface GqlRestaurantArgs {
+    _id: string;
 }
 
-export interface RestaurantMutations { }
+export interface GqlRestaurantsQueries {
+    restaurants: () => Promise<GqlRestaurant[]>;
+    restaurant: (parent: any, args: GqlRestaurantArgs) => Promise<GqlRestaurant>;
+}

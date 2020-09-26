@@ -1,22 +1,18 @@
 import { Resolver } from "../resolvers.model";
-import { Restaurant, RestaurantMutations, RestaurantQueries } from "./restaurants.model";
+import { GqlRestaurant, GqlRestaurantArgs, GqlRestaurantsQueries } from "./restaurants.model";
+import Restaurant from '../../../mongodb/models/restaurant.model';
 
-const restaurants: Restaurant[] = [
-    {
-        id: 1,
-        name: "McDonald's",
-        owner: 'Ronald McDonald'
-    },
-    {
-        id: 2,
-        name: 'KFC',
-        owner: 'Someone'
-    }
-];
+async function getRestaurantList() {
+    return await Restaurant.find() as GqlRestaurant[];
+}
 
-export const restaurantsResolver: Resolver<RestaurantQueries, RestaurantMutations> = {
+async function getRestaurantListItem({ _id }: GqlRestaurantArgs) {
+    return await Restaurant.findById(_id) as GqlRestaurant;
+}
+
+export const restaurantsResolver: Resolver<GqlRestaurantsQueries> = {
     queries: {
-        restaurants: () => restaurants,
-        restaurant: (parent: any, args: any) => restaurants.find(restaurant => restaurant.id === +args.id) || null
+        restaurants: () => getRestaurantList(),
+        restaurant: (parent: any, args: GqlRestaurantArgs) => getRestaurantListItem(args)
     }
 }
