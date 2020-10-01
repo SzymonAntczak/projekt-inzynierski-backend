@@ -18,7 +18,6 @@ Mongoose.connect(`mongodb+srv://${environment.mongoDb.user}:${environment.mongoD
     .then(() => server.listen(environment.port))
     .then(serverInfo => console.log(`Server ready at ${serverInfo.url}. `))
     .catch(err => console.log(err))
-    
 
 if (module.hot) {
     module.hot.accept();
